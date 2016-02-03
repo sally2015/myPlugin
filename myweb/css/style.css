@@ -11,6 +11,9 @@ body {
   top: 100%;
   transition: 0.8s;
 }
+.page_active {
+  top: 0 !important;
+}
 /*--------------mynav------------------*/
 .mynav {
   position: absolute;
@@ -124,6 +127,7 @@ body {
   font-size: 13px;
 }
 /*--------------mynav------------------*/
+/*--------------mynav------------------*/
 .page1 {
   top: 0;
   background: #4BC587;
@@ -136,6 +140,57 @@ body {
   top: 0;
   position: absolute;
 }
-.page_active {
-  top: 0 !important;
+.light {
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
+.light_left {
+  position: absolute;
+  left: 98px;
+  top: 120px;
+  transform-origin: bottom left;
+  transform: rotateZ(-40deg);
+  transition: 0.8s;
+}
+.light_right {
+  position: absolute;
+  right: 98px;
+  top: 120px;
+  transform-origin: bottom right;
+  transform: rotateZ(40deg);
+  transition: 0.8s;
+}
+.light_active {
+  transform: rotateZ(0deg);
+}
+.passage {
+  display: table;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  word-spacing: 10px;
+}
+.wel {
+  display: table-cell;
+  vertical-align: middle;
+}
+.wel h1 {
+  font-size: 46px;
+}
+.wel p {
+  margin-top: 40px;
+  font-size: 26px;
+}
+.tip {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  color: rgba(36, 51, 56, 0.7);
+  font-family: "宋体";
+  font-size: 16px;
+}
+/*--------------mynav------------------*/
