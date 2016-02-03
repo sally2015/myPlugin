@@ -1,0 +1,141 @@
+body {
+  font-family: "微软雅黑";
+  height: 100%;
+  overflow: hidden;
+}
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  transition: 0.8s;
+}
+/*--------------mynav------------------*/
+.mynav {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: 22px;
+  height: 78px;
+  margin-bottom: 0;
+  border: none;
+  background: #53D491;
+  border-radius: 0;
+  color: #fff;
+}
+.mynav .logo {
+  background: url(../images/logo.png) no-repeat;
+  width: 123px;
+  height: 48px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.mynav .navbar-nav li > a {
+  line-height: 78px;
+  display: block;
+  padding: 0 15px;
+  color: #fff;
+  font-size: 16px;
+}
+.mynav .in .navbar-nav li > a {
+  color: #000;
+  line-height: 38px;
+}
+.mynav .collapse {
+  position: absolute;
+  right: 330px;
+}
+.mynav .rotateBtn {
+  position: absolute;
+  right: 0;
+  width: 240px;
+  top: 0;
+  bottom: 0;
+  border: 6px solid #53D491;
+  text-align: center;
+}
+.mynav .rotateBtn ul {
+  list-style: none;
+  position: relative;
+  margin-bottom: 0;
+  height: 100%;
+  padding-left: 0;
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+.mynav .rotateBtn li {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 66px;
+  perspective: 600px;
+  transition: .3s linear;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.mynav .rotateBtn a {
+  font-size: 13px;
+  text-decoration: none;
+}
+.mynav .rotateBtn li:nth-of-type(1) {
+  background: #000000;
+  transform-origin: bottom center;
+  transform: rotateX(0deg);
+  top: 0;
+}
+.mynav .rotateBtn li:nth-of-type(1) a {
+  color: #fff;
+}
+.mynav .rotateBtn li:nth-of-type(2) {
+  background: #fff;
+  transform-origin: top center;
+  transform: rotateX(-90deg);
+  top: 100%;
+}
+.mynav .rotateBtn li:nth-of-type(2) a {
+  color: #000000;
+}
+.mynav .rotateBtn ul:hover li:nth-of-type(1) {
+  transform: rotateX(90deg);
+  top: -100%;
+}
+.mynav .rotateBtn ul:hover li:nth-of-type(2) {
+  transform: rotateX(0deg) translateY(0%);
+  top: 0;
+}
+.language {
+  position: absolute;
+  right: 262px;
+  top: 0;
+  bottom: 0;
+}
+.language .btn-default {
+  border: none;
+  background: #48bb80;
+  width: 46px;
+  height: 46px;
+  margin-top: 16px;
+  text-align: center;
+  line-height: 34px;
+  border-radius: 0;
+  color: #fff;
+  font-size: 13px;
+}
+/*--------------mynav------------------*/
+.page1 {
+  top: 0;
+  background: #4BC587;
+}
+.shadowbox {
+  background: rgba(0, 0, 0, 0.04);
+  width: 50%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+.page_active {
+  top: 0 !important;
+}
