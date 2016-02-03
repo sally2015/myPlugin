@@ -10,6 +10,7 @@ body {
   left: 0;
   top: 100%;
   transition: 0.8s;
+  -webkit-transition: 0.8s;
 }
 .page_active {
   top: 0 !important;
@@ -65,7 +66,9 @@ body {
   margin-bottom: 0;
   height: 100%;
   padding-left: 0;
+  -webkit-perspective: 600px;
   perspective: 600px;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
 .mynav .rotateBtn li {
@@ -73,7 +76,9 @@ body {
   width: 100%;
   height: 100%;
   line-height: 66px;
-  perspective: 600px;
+  -webkit-perspective: 600px;
+  -webkit-perspective: : 600px;
+  -webkit-transition: .3s linear;
   transition: .3s linear;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -84,6 +89,8 @@ body {
 }
 .mynav .rotateBtn li:nth-of-type(1) {
   background: #000000;
+  -webkit-transform-origin: bottom center;
+  -webkit-transform: rotateX(0deg);
   transform-origin: bottom center;
   transform: rotateX(0deg);
   top: 0;
@@ -93,6 +100,8 @@ body {
 }
 .mynav .rotateBtn li:nth-of-type(2) {
   background: #fff;
+  -webkit-transform-origin: top center;
+  -webkit-transform: rotateX(-90deg);
   transform-origin: top center;
   transform: rotateX(-90deg);
   top: 100%;
@@ -101,10 +110,12 @@ body {
   color: #000000;
 }
 .mynav .rotateBtn ul:hover li:nth-of-type(1) {
+  -webkit-transform: rotateX(90deg);
   transform: rotateX(90deg);
   top: -100%;
 }
 .mynav .rotateBtn ul:hover li:nth-of-type(2) {
+  -webkit-transform: rotateX(0deg) translateY(0%);
   transform: rotateX(0deg) translateY(0%);
   top: 0;
 }
@@ -127,7 +138,7 @@ body {
   font-size: 13px;
 }
 /*--------------mynav------------------*/
-/*--------------mynav------------------*/
+/*--------------page1------------------*/
 .page1 {
   top: 0;
   background: #4BC587;
@@ -149,20 +160,27 @@ body {
   position: absolute;
   left: 98px;
   top: 120px;
+  -webkit-transform-origin: bottom left;
+  -webkit-transform: rotateZ(-40deg);
   transform-origin: bottom left;
   transform: rotateZ(-40deg);
+  -webkit-transition: 0.8s;
   transition: 0.8s;
 }
 .light_right {
   position: absolute;
   right: 98px;
   top: 120px;
+  -webkit-transform-origin: bottom right;
   transform-origin: bottom right;
+  -webkit-transform: rotateZ(40deg);
+  -webkit-transition: 0.8s;
   transform: rotateZ(40deg);
   transition: 0.8s;
 }
 .light_active {
   transform: rotateZ(0deg);
+  -webkit-transform: rotateZ(0deg);
 }
 .passage {
   display: table;
@@ -193,4 +211,4 @@ body {
   font-family: "宋体";
   font-size: 16px;
 }
-/*--------------mynav------------------*/
+/*-------------page1------------------*/
