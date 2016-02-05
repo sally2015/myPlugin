@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
@@ -26,8 +28,8 @@
 					</ul>
 				</div>
 				<div class="dropdown language">
-					<a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">CH</a>
-					<ul class="dropdown-menu">
+					<a href="javascript:;" class="btn btn-default">CH</a>
+					<ul>
 						<li><a href="#">CH</a></li>
 						<li><a href="#">EN</a></li>
 					</ul>
@@ -40,22 +42,68 @@
 				</div>
 			</div>
 		</nav>
+		<!--page1-->
 		<section class="page page1">
 			<div class="shadowbox"></div>
 			<img class="light img-responsive" src="images/scene1/ligth_green.png">
 			<img class="light_left img-responsive" src="images/scene1/light_left.png">
 			<img class="light_right img-responsive" src="images/scene1/light_right.png">
-			<div class="passage">
-				<div class="wel">
+			<div class="center-text1">
+				<div class="wel center-text2">
 					<h1 class="text-center">Welcome to OBeing's world</h1>
 					<p>了解我只需要轻轻滑动鼠标哦~ ╮(╯▽╰)╭</p>
 				</div>
 			</div>
 			<div class="tip">
 				<p>用力往下滑吧</p>
-				<span class="glyphicon glyphicon-arrow-down"></span>
+				<span class="glyphicon glyphicon-arrow-down tip_arrow"></span>
 			</div>
 		</section>
+		<!--page1-->
+		<!--page2-->
+		<section class="page page2 page_active">
+			<div class="shadowbox"></div>
+			<img src="images/scene2/ligth_purple.png" class="light img-responsive">
+			
+			<div class="scene scene1">
+				<div class="center-text1">
+					<div class="center-text2">
+						<!--人物随着鼠标的移动，投影的效果-->
+						<div class="row">
+							<div class="col-md-6">
+								<img src="images/scene2/step1/IMG_4500.JPG" class="img-responsive person">
+							</div>
+							<div class="col-md-6">
+								<div class="person_text">
+									<h3>人物档案</h3>
+									<p>姓名：<span class="context">欧碧莹</span></p>
+									<p>性别：<span class="context">女</span></p>
+									<p>出生年月：<span class="context">1995.4</span></p>
+									<p>籍贯：<span class="context">广东佛山</span></p>
+									<p>院校：<span class="context">广东工业大学</span></p>
+									<p>专业：<span class="context">信息管理与信息系统</span></p>
+									<p>政治面貌：<span class="context">团员</span></p>
+									<span class="glyphicon glyphicon-pencil"></span>
+									<span class="pencil_line"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ul class="dot">
+				<li class="active">
+					<span>1</span>
+				</li>
+				<li>
+					<span>2</span>
+				</li>
+				<li>
+					<span>3</span>
+				</li>
+			</ul>
+		</section>
+		<!--page2-->
 		<script src="js/jquery-1.11.1.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/script.js"></script>
