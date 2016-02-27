@@ -1,0 +1,551 @@
+body,ul,li,p,h1,h2,h3,h4,h5{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	overflow: hidden;
+}
+li{
+	list-style: none;
+}
+img{
+	vertical-align: middle;
+}
+
+a{
+	text-decoration: none;
+}
+
+.header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	background: #2ba5d9;
+	z-index: 10;
+}
+.header h1{
+	line-height: 70px;
+	color: #fff;
+	text-indent: 100px;
+}
+.nav{
+	position: absolute;
+	right: 100px;
+	top: 40px;
+}
+.nav ul{
+	position: relative;
+}
+.nav li{
+	position: relative;
+	float: left;
+	padding: 0 20px;
+}
+.nav li a{
+	
+	color: #fff;
+	display: block;
+}
+.nav .active a{
+	color: yellow;
+}
+.nav img{
+	display: none;
+}
+.nav .img_show {
+	display: block;
+}
+.caret{
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	border:10px rgba(0,0,0,0) solid;
+	border-top:10px #2ba5d9 solid;
+	top: 30px;
+	right: 222px;/*160，92，24*/
+}
+/*-----------------主体-------------------*/
+
+.main{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+.sence{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding-top: 70px;
+	background-size: cover;
+	transition: 0.4s;
+	-webkit-transition: 0.4s;
+	z-index: 1;
+}
+.sence_up{
+	top:-110%;
+	z-index: 0;
+}
+.sence_down{
+	top: 110%;
+	z-index: 0;
+}
+/*-----------------scene1-------------------*/
+.sence1{
+	background: url(../img/bg1.jpg) no-repeat;
+	
+}
+.pic_list{
+	position: absolute;
+	width: 1100px;
+	height: 520px;
+	left: 50%;
+	top: 50%;
+	margin-left: -550px;
+	margin-top:-260px;
+	perspective: 2100px;
+	z-index: 2;
+}
+.pic_list li{
+	position: absolute;
+	width: 1100px;
+	height: 520px;
+	left: 0%;
+	top:0%;
+	opacity: 0;
+	transform-style:preserve-3d ;
+}
+.pic_list .active{
+	opacity: 1;
+}
+.pic_list .active1_in{
+	
+	transform-origin: right center;
+	-webkit-transform-origin: right center;
+	animation: picList_one_in  1s linear;
+	-webkit-animation: picList_one_in  1s linear;
+	animation-fill-mode: backwards;
+	-webkit-animation-fill-mode: backwards;
+	-webkit-transform: scale(0.6) rotateY(20deg) translateX(-975px);
+	transform: scale(0.6) rotateY(20deg) translateX(-975px);
+	
+}
+.pic_list .active1_out{
+	transform-origin: right center;
+	-webkit-transform-origin: right center;
+	animation: picList_one_out  1s linear;
+	-webkit-animation: picList_one_out  1s linear;
+	animation-fill-mode: backwards;
+	-webkit-animation-fill-mode: backwards;
+	-webkit-transform: scale(1) rotateY(0deg) translateX(px);
+	transform: scale(1) rotateY(0deg) translateX(0px);
+	opacity: 0;
+}
+
+.pic_list .active2_in{
+	transform-origin:left center;
+	-webkit-transform-origin: left center;
+	animation: picList_two_in 1 0.8s linear;
+	-webkit-animation: picList_two_in 1 1s linear;
+	animation-fill-mode: backwards;
+	-webkit-animation-fill-mode: backwards;
+	-webkit-transform: scale(0.6) rotateY(-20deg) translateX(975px);
+	transform: scale(0.6) rotateY(-20deg) translateX(975px);
+	
+}
+.pic_list .active2_center{
+	transform-origin:left center;
+	-webkit-transform-origin: left center;
+	animation: picList_two_center  1s linear;
+	-webkit-animation: picList_two_center 1s linear;
+	animation-fill-mode: backwards;
+	-webkit-animation-fill-mode: backwards;
+	-webkit-transform: scale(1) rotateY(0deg) translateX(0px);
+	transform: scale(1) rotateY(0deg) translateX(0px);
+	z-index: 8;
+}
+.line{
+	position: absolute;
+	left: 50%;
+	width: 1px;
+	height: 100%;
+	background: #fff;
+	top: 0;
+}
+.sence1 .dot{
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	width: 180px;
+	margin-left: -90px;
+	z-index: 9;
+}
+.sence1 .dot span{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	background: rgba(0,0,0,0.2);
+	border-radius: 50%;
+}
+.sence1 .dot .active{
+	background: #fff;
+}
+/*-----------------scene1-------------------*/
+/*-----------------scene2-------------------*/
+.sence2{
+	background: url(../img/bg3.jpg) no-repeat;
+	
+}
+.sence2 .text,.sence3 .text,.sence4 .text{
+	position: absolute;
+	top: 140px;
+	left: 180px;
+	width: 400px;
+	z-index: 1;
+}
+.sence2 h1,.sence3 h1,.sence4 h1{
+	font-size: 68px;
+	line-height: 68px;
+	font-weight: bold;
+	color: #009ee0;
+}
+.sence2 p,.sence3 p{
+	margin-top: 100px;
+	color: #fff;
+}
+.plane{
+	position: absolute;
+	z-index: 0;
+	transition: 0.4s linear 0.4s;
+}
+.plane1{
+	left: 480px;
+  	top: -10px;
+	background: url(../img/plane1.png) no-repeat;
+	width: 359px;
+ 	height: 283px;
+}
+.plane2{
+	left: 70px;
+  	top: 350px;
+	background: url(../img/plane2.png) no-repeat;
+	width: 309px;
+ 	height: 249px;
+}
+.plane3{
+	left: 450px;
+  	top: 520px;
+	background: url(../img/plane3.png) no-repeat;
+	width: 230px;
+ 	height: 182px;
+}
+.trans{
+	position: absolute;
+	z-index: 1;
+}
+.dec{
+	
+	position: absolute;
+	width: 9px;
+	height: 1px;
+	background: rgba(255,255,255,0.5);
+}
+.dec_left{
+	top: -4px;
+	left: -4px;
+}
+.dec_right{
+	top: -4px;
+	right: -4px;
+}
+.dec_right_b{
+	bottom: -4px;
+	right: -4px;
+}
+.dec_bottom{
+	bottom: -4px;
+	left: -4px;
+}
+.dec1{
+	position: absolute;
+	top: -4px;
+	left: 4px;
+	width: 1px;
+	height: 9px;
+	background: rgba(255,255,255,0.5);
+}
+.trans{
+	position: absolute;
+  	right: 134px;
+  	top: 160px;
+  	width: 480px;
+  	height: 400px;
+}
+.trans_list{
+	width: 480px;
+  	height: 400px;
+}
+.trans_list li{
+	position: relative;
+	float: left;
+	width: 120px;
+	height: 132px;
+}
+.trans_list li:hover{
+	background: rgb(0,39,68);
+}
+.trans_list .img,.trans_list .back{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 120px;
+	height: 132px;
+}
+.trans_list .img{
+	transform: rotateY(0deg);
+	backface-visibility: hidden;
+	transition: 0.4s linear;
+}
+.trans_list .back{
+	box-sizing: border-box;
+	padding: 8px;
+	word-break: break-word;
+	color: #fff;
+	background: rgb(82, 190, 235);
+	transform: rotateY(180deg);
+  	backface-visibility: hidden;
+  	transition: 0.6s linear;
+}
+.trans_list li:hover .back{
+	transform: rotateY(0deg);
+}
+.trans_list li:hover .img{
+	transform: rotateY(-180deg);
+}
+.sence2 .move1{
+	
+	transform: translateX(-50px) translateY(-50px);
+}
+.sence2 .move2{
+	transform: translateX(-50px) translateY(50px);
+}
+.sence2 .move3{
+	transform: translateX(50px) translateY(50px);
+}
+/*-----------------scene2-------------------*/
+/*-----------------scene3-------------------*/
+.sence3{
+	background: url(../img/bg5.jpg) no-repeat;
+	
+}
+.grid_pic{
+	position: absolute;
+	width: 260px;
+	height: 200px;
+	border: 5px solid rgba(255,255,255,0.5);
+	border-radius: 10px;
+	overflow: hidden;
+	transition:0.5s linear 0.4s;
+	transform: rotate(0deg);
+	
+}
+
+.grid_pic ul{
+	width: 260px;
+	height: 200px;
+	z-index:1 ;
+}
+.grid_pic li{
+	position: relative;
+	width: 50%;
+	height: 50%;
+	float: left;
+	transition: 0.4s linear;
+}
+.grid_pic:hover .grid_active{
+	z-index:2 ;
+}
+.grid_pic .grid_active{
+	z-index:0 ;
+}
+
+.grid_active{
+	position: absolute;
+}
+.grid_pic_list{
+	position: absolute;
+}
+
+.grid_pic1 .grid_active li{
+	background: url(../img/about2.jpg) no-repeat;
+}
+.grid_pic2 .grid_active li{
+	background: url(../img/about4.jpg) no-repeat;
+}
+.grid_pic:hover .grid_active li{
+	-webkit-transform: translateX(0) translateY(0) !important;
+	transform: translateX(0) translateY(0) !important;
+	
+}
+.grid_pic1:hover .grid_active li{
+	background: url(../img/about2.jpg) no-repeat;
+}
+.grid_pic2:hover .grid_active li{
+	background: url(../img/about4.jpg) no-repeat;
+}
+.grid_pic .grid_pic_list li{
+		
+	-webkit-transform: translateX(0) translateY(0);
+	transform: translateX(0) translateY(0);
+	opacity: 1;
+
+}
+.grid_pic1 .grid_pic_list li{
+	background: url(../img/about1.jpg) no-repeat;
+}
+.grid_pic2 .grid_pic_list li{
+	background: url(../img/about3.jpg) no-repeat;
+}
+
+
+.grid_pic:hover .grid_pic_list  .grid_left_top{
+	background-position: 0% -100% !important;
+	
+}
+.grid_pic:hover .grid_pic_list  .grid_left_bottom{
+	background-position:-100% 0%  !important;
+}
+.grid_pic:hover .grid_pic_list .grid_right_top{
+	background-position: 200% 0%  !important;
+}
+.grid_pic:hover .grid_pic_list .grid_right_bottom{
+	background-position: 100% 200% !important;
+}
+.grid_pic .grid_active li:nth-of-type(1){
+	-webkit-transform:translateY(-100%);
+	transform:translateY(-100%);
+}
+.grid_pic .grid_active li:nth-of-type(2){
+	-webkit-transform:translateX(100%);
+	transform:translatex(100%);
+}
+.grid_pic .grid_active li:nth-of-type(3){
+	-webkit-transform:translateX(-100%);
+	transform:translatex(-100%);
+}
+.grid_pic .grid_active li:nth-of-type(4){
+	-webkit-transform:translateY(100%);
+	transform:translateY(100%);
+}
+
+.grid_pic1{
+	
+	right: 180px;
+	top: 140px;
+}
+
+
+.grid_left_top{
+	background-position: left top !important;
+}
+.grid_left_bottom{
+	background-position: left bottom !important;
+	}
+.grid_right_top{
+	background-position: right top !important;
+}
+.grid_right_bottom{
+	background-position: right bottom !important;
+}
+.grid_pic2{
+	right: 340px;
+	top: 400px;
+}
+.sence3 .move1{
+	transform: rotate(30deg);
+}
+.sence3 .move2{
+	transform: rotate(-30deg);
+}
+/*-----------------scene3-------------------*/
+/*-----------------scene4-------------------*/
+.sence4{
+	background: url(../img/bg2.jpg) no-repeat center top;
+}
+.sence4 h1{
+	transition: 0.6s linear 0.4s;
+	-webkit-transition: 0.6s linear 0.4s;
+}
+.sence4 p{
+	color: #fff;
+	position: absolute;
+	right: 160px;
+	top: 180px;
+	width: 400px;
+	transition: 0.6s linear 0.4s;
+	-webkit-transition: 0.6s linear 0.4s;
+}
+.house{
+	position: absolute;
+	bottom: 60px;
+	left: 50%;
+	margin-left: -452px;
+	width: 904px;
+	height: 365px;
+	
+}
+.house_list{
+	overflow: hidden;
+}
+.house_list li{
+	float: left;
+	width: 113px;
+	height: 365px;
+	background: url(../img/team.png) no-repeat;
+}
+.house_list li:nth-of-type(1){
+	background-position: 0 0;
+}
+.house_list li:nth-of-type(2){
+	background-position: -113px 0;
+}
+.house_list li:nth-of-type(3){
+	background-position: -226px 0;
+}
+.house_list li:nth-of-type(4){
+	background-position: -339px 0;
+}
+.house_list li:nth-of-type(5){
+	background-position: -452px 0;
+}
+.house_list li:nth-of-type(6){
+	background-position: -565px 0;
+}
+.house_list li:nth-of-type(7){
+	background-position: -678px 0;
+}
+.house_list li:nth-of-type(8){
+	background-position: -791px 0;
+}
+.house_list .mask{
+	opacity: 0.6;
+}
+.sence4_ani_left{
+	transform: translateX(-80px);
+	-webkit-transform: translateX(-80px);
+}
+.sence4_ani_right{
+	transform: translateX(80px);
+	-webkit-transform: translateX(80px);
+}
+/*-----------------scene4-------------------*/
+/*-----------------主体-------------------*/
