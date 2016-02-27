@@ -281,6 +281,7 @@ window.onload=function(){
 		}
 		
 		function navChange(){
+			var oCaret=document.getElementsByClassName('caret')[0];
 			for(var i=0;i<aLi.length;i++){
 				tool.removeClass(aLi[i],'active');
 						
@@ -288,9 +289,19 @@ window.onload=function(){
 			if(nowPage==0){
 				tool.addClass(aImg[0],'img_show');
 				tool.removeClass(aImg[1],'img_show');
+				oCaret.style.left=19+'px'
 			}else{
 				tool.removeClass(aImg[0],'img_show');
 				tool.addClass(aImg[1],'img_show');
+			}
+			if(nowPage==1){
+				oCaret.style.left=82+'px'
+			}
+			if(nowPage==2){
+				oCaret.style.left=150+'px'
+			}
+			if(nowPage==3){
+				oCaret.style.left=218+'px'
 			}
 					
 			tool.addClass(aLi[nowPage],'active');
