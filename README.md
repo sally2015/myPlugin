@@ -15,3 +15,39 @@ options{
     moveWay：opacity,vertical,horizontal,表示轮播方式
     }
     
+    示例：
+    <ul class="carousel">
+						<li>
+							<a herf="#">
+								<img src="img/index_nav_bg1.jpg">
+							</a>
+						</li>
+						<li>
+							<a herf="#">
+								<img src="img/index_nav_bg2.jpg">
+							</a>
+						</li>
+						<li>
+							<a herf="#">
+								<img src="img/index_nav_bg3.jpg">
+							</a>
+						</li>
+						<li>
+							<a herf="#">
+								<img src="img/index_nav_bg4.jpg">
+							</a>
+						</li>
+						<li>
+							<a herf="#">
+								<img src="img/index_nav_bg5.jpg">
+							</a>
+						</li>
+					<ul class="dot">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li class="active"></li>
+					</ul>
+				</ul>
+    
