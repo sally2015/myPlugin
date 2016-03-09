@@ -9,15 +9,22 @@
 		this.setting={//默认参数
 			delay:3000,
 			eventWay:'mouseover',
-			moveway:'horizontal'
+			moveWay:'horizontal'
 		}
 		
 		this.$picList=$('.carousel');
 		this.$dotList=$('.dot');
 		this.$aDotLi=this.$dotList.find('li');
 		this.$aLi=$('.carousel>li');
-		this.prevIndex=0;
-		this.nowIndex=this.$aDotLi.length-1;
+		
+		this.nowIndex=this.$dotList.find('.active').index();
+		if(this.nowIndex>=this.$aDotLi.size()){
+			this.prevIndex=0;
+		}else{
+			this.prevIndex=this.nowIndex-1;
+		}
+		
+		
 
 		
 		$.extend(this.setting, options);
@@ -28,18 +35,18 @@
 	
 	Carousel.prototype.init=function(){
 		var self=this;
-		if(this.setting.moveway=='horizontal'){
+		if(this.setting.moveWay=='horizontal'){
 			
 			$.each(this.$aLi, function(index,item) {
 				
 				if(index!=self.nowIndex){
-					$(item).css('z-index',1).css({left:'180%'});
+					$(item).css('z-index',1).css({left:'100%'});
 					
 				}else {
-					$(item).css({left:'50%'});
+					$(item).css('z-index',5).css({left:'50%'});
 				}
 			});
-		}else if(this.setting.moveway=='vertical'){
+		}else if(this.setting.moveWay=='vertical'){
 			
 			$.each(this.$aLi, function(index,item) {
 				
@@ -60,26 +67,33 @@
 		var self=this;
 		self.nowIndex=nowIndex;
 
-		
-		if(self.setting.moveway=='horizontal'){
+		console.log(self.nowIndex);
+		console.log(self.prevIndex);
+		if(self.setting.moveWay=='horizontal'){
 			
 			$.each(this.$aLi, function(index,item) {//horizontal方式move
-			
-				if(index==self.nowIndex){
 				
+				if(self.nowIndex==self.prevIndex){
+					return;
+				}
+				if(index==self.nowIndex){
+					
 					$(item).css('z-index',5).animate({left:'50%'});
+					
+				
 					
 				}else if(index==self.prevIndex){
 					
-					$(item).css('z-index',1).animate({left:'-100%'},function(){
+					$(item).css('z-index',1).animate({'left':'-100%'},function(){
 						
 						$(this).css('left','100%');
 					});
+				
 				}
 			
 			});
 			
-		}else if(self.setting.moveway=='vertical'){//vertical方式move
+		}else if(self.setting.moveWay=='vertical'){//vertical方式move
 			
 			$.each(this.$aLi, function(index,item) {
 			
@@ -124,9 +138,11 @@
 			
 			self.prevIndex=self.nowIndex;
 			
-			self.picMove($(this).index());
 			self.nowIndex=$(this).index();
-		
+			
+			self.picMove(self.nowIndex);
+			
+			
 			self.changeDot();
 			
 			
