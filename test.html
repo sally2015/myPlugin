@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="msg">msg,3秒自动隐藏</button>
+		<button id="alert">alert默认样式</button>
+		<button id="defined">标题可自定义的alert(不可拖拽)</button>
+		<button id="drag">标题可自定义的alert(可拖拽)</button>
+		
+		<script src="shawnway-layer.js"></script>
+		<script>
+			document.getElementById('msg').onclick=function(){
+				shawnwayLayer.msg('gsgsgsgggggggggggggggggg',3000)//3秒隐藏,默认2秒隐藏
+			}
+			document.getElementById('alert').onclick=function(){
+				shawnwayLayer.alert('gsgfffffffffffffffffffffffffffffsgsgggggggggggggggggg')
+			}
+			document.getElementById('defined').onclick=function(){//以对象形式传入内容
+				shawnwayLayer.alert({
+					title:'不可拖拽',
+					content:'这里是内容',
+					isDrag:false//默认可拖拽
+				})
+			}
+			document.getElementById('drag').onclick=function(){//以对象形式传入内容
+				shawnwayLayer.alert({
+					title:'可拖拽（限于标题处可拖拽）',
+					content:'这里是内容',
+					isDrag:true//默认可拖拽
+				})
+			}
+		</script>
+	</body>
+</html>
