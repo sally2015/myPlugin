@@ -2,34 +2,49 @@ var tool={
 	
 	viewH:document.documentElement.clientHeight,//获取可视区高度
 	viewW:document.documentElement.clientWidth,//获取可视区宽度
-	addClass:function(obj,name){//添加class
+	addClass:function(obj,name){//添加class,支持一次添加多个class
 		
 		var str = obj.className;
-		
+		var nameArr=name.split(' ');
 		var arr=str.split(' ');
 		
 		for(var i=0;i<arr.length;i++){
-			
-			if(arr[i]==name){
-				return ;
+			if(!nameArr.length){
+				break;
+			}
+			for(var j=0;j<nameArr.length;j++){
+				
+				if(nameArr[j]==arr[i]){
+					nameArr.splice(j,1);
+					j--;
+				}
 			}
 		}
-		obj.className+=" "+name;
+		if(nameArr.length){
+			obj.className+=" "+nameArr.join(' ');	
+		}
+		
 		
 	},
-	removeClass:function(obj,name){//删除class
+	removeClass:function(obj,name){//删除class,支持一次删除多个class
 		
 		var str = obj.className;
 		var arr=str.split(' ');
-		
+		var nameArr=name.split(' ');
 		for(var i=0;i<arr.length;i++){
-			
-			if(arr[i]==name){
-				arr.splice(i,1);
-				obj.className=arr.join(' ');
-				return;
+			if(!nameArr.length){
+				break;
+			}
+			for(var j=0;j<nameArr.length;j++){
+				
+				if(nameArr[j]==arr[i]){
+					arr.splice(i,1);
+					nameArr.splice(j,1);
+					j--;
+				}
 			}
 		}
+		obj.className=arr.join(' ')
 		
 	},
 	hasClass:function(obj,name){//检测是否含有指定class
@@ -43,6 +58,13 @@ var tool={
 			}
 		}
 		return false;
+	},
+	toggleClass:function(obj,name){
+		if(this.hasClass(obj,name)){
+			this.removeClass(obj,name);
+		}else{
+			this.addClass(obj,name);
+		}
 	},
 	getStyle:function(obj,attr){//获取样式，兼容到ie7
 		if(obj.currentStyle){
@@ -92,6 +114,88 @@ var tool={
 		
 		oScript.src=url;
 		document.getElementsByTagName('head')[0].appendChild(oScript);
+	},
+	addHandle:function(obj,ev,calback){
+		if(obj.addEventListener){
+			
+			this.addHandle=function(obj,ev,calback){//检测后覆盖原来的函数
+				obj.addEventListener(ev,calback,false);
+			}
+		}else{
+			this.addHandle=function(obj,ev,calback){
+				obj.attachEvent('on'+ev,calback);
+			}
+
+		}
+		this.addHandle(obj,ev,calback)//只执行一次
+	},
+	removeHandle:function(obj,ev,calback){
+		if(obj.removeEventListener){
+			
+			this.removeHandle=function(obj,ev,calback){//检测后覆盖原来的函数
+				obj.removeEventListener(ev,calback,false);
+			}
+		}else{
+			this.addHandle=function(obj,ev,calback){
+				obj.detachEvent('on'+ev,calback);
+			}
+
+		}
+		this.removeHandle(obj,ev,calback)//只执行一次
+	},
+	getRandom:function(start,end){//获取随机数字
+		var ars=arguments;
+		var s;
+		var e;
+		if(ars.length==1){
+			e=ars[0];
+			s=0;
+		}else{
+			s=start;
+			e=end;
+		}
+		return Math.floor(Math.random()*(e-s+1)+start);
+	},
+	getNextElement:function(obj){//兼容ie8的获取下一个兄弟节点
+		if(obj.nextElementSibling){
+			return obj.nextElementSibling;
+		}else{
+			var temp=obj.nextSibling;
+			while(temp&&temp.nodeType!=1){
+				temp=temp.nextSibling;
+			}
+			return temp;
+		}
+	},
+	getArryUnique:function(arr,btn){//数组去重,btn为true选择从大到小,默认为从小到大
+		var newArry=[];
+		var b=btn;
+		
+		if(b!==undefined){
+			if(btn){
+				arr.sort(function(a,b){//先进行排序
+					return b-a;
+				});
+			}
+		}else{
+			arr.sort(function(a,b){//先进行排序
+					return b-a;
+			});
+		}
+		
+		var temp=arr[0];
+		newArry[0]=arr[0];
+		
+		for(var i=1;i<arr.length;i++){
+			if(arr[i]==temp){
+				continue;
+			}else{
+				temp=arr[i];
+				newArry.push(arr[i]);
+			}
+		}
+		return newArry;
 	}
+	
 	
 }
