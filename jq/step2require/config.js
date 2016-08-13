@@ -1,0 +1,9 @@
+require.config({
+    paths:{
+        "JQ":"./JQ"
+    }
+});
+require(['JQ'],function(JQ){
+	//JQ('div').setBackground();
+	console.log(JQ('div'))
+});
