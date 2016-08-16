@@ -1,9 +1,12 @@
 require.config({
     paths:{
-        "JQ":"./JQ"
+        "JQ":"./JQ",
+        "init":'./init'
     }
 });
-require(['JQ'],function(JQ){
+require(['JQ','init'],function(JQ,init){
 	//JQ('div').setBackground();
-	console.log(JQ('div'))
+	// console.log(JQ().prototype)
+	console.log(JQ('div').prototype)
+	console.log( JQ.prototype )
 });

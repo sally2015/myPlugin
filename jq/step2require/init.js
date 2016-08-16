@@ -1,9 +1,9 @@
 define(function(require, exports, module) {
        var init =function(JQ){
-		JQ.fn.init = function(selector , context , root){
+		JQ.prototype.init = function(selector , context , root){
 
-			if(! selector){
-				return;
+			if(!selector){
+				return this;
 			}else{
 				var ele = document.querySelector(selector);
 
@@ -11,10 +11,15 @@ define(function(require, exports, module) {
 					this[0] = ele;
 					this.length = 1;
 				}
+
+				return this;
 			}
 
+
 		}
-		init.prototype = JQ.prototype;//使new init 出来的对象可以使用JQ的原型方法
+		JQ.prototype.init.prototype = JQ.prototype;//使new init 出来的对象可以使用JQ的原型方法
+		
 	};
+	
 	return init;
 });

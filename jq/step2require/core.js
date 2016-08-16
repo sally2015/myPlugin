@@ -1,4 +1,5 @@
 define(function(require, exports, module) {
+		var v = require('./var');
     	var version="1.0.0";
 		function JQ (selector){ //构造函数
 
@@ -35,7 +36,7 @@ define(function(require, exports, module) {
 
 				}
 				//若target不是对象的处理
-				if( typeof target !=='object' && typeof target !=='function'){
+				if( typeof target !=='object' && !JQ.isFunction(target)){
 
 					target = {};
 
@@ -45,13 +46,6 @@ define(function(require, exports, module) {
 					target = this;
 					i--; // 为了获得原target
 
-				}
-
-				var isObject = function(obj){
-					return Object.prototype.toString.call(obj) === "[object object]"
-				}
-				var isArray = function(obj){
-					return object.prototype.toString.call(obj) === "[object Array]"
 				}
 				for( ; i<length; i++){
 
@@ -70,7 +64,8 @@ define(function(require, exports, module) {
 								continue;
 							}
 							//深拷贝
-							if( deep && copy && isObject(copy) || copyIsArray = isArray(copy)){
+							if( deep && copy && ( JQ.isPlainObject( copy ) ) ||
+							 ( copyIsArray = JQ.isArray( copy ) ) ){
 
 								//拷贝属性是数组
 								if( copyIsArray ){
@@ -78,7 +73,7 @@ define(function(require, exports, module) {
 									clone = src && isArray(src)?src :[];
 									
 								}else{ //拷贝对象是对象
-									clone = src && isObject(src)?src :{};
+									clone = src && JQ.isPlainObject( src )?src :{};
 								}
 
 								//继续递归
@@ -97,6 +92,43 @@ define(function(require, exports, module) {
 			//返回修改后的对象
 			return target;
 		}
+
+		"Boolean Number String Function Array Date RegExp Object Error Synbol".split(" ").forEach(function(name){
+			v.class2type["[object "+name+"]"] = name.toLowerCase();
+		});
+
+		JQ.extend({
+			isArray : Array.isArray,
+			isPlainObj : function(obj){
+				var proto,Ctor;
+				console.log(111)
+				if( !obj || v.toString.call !== '[object object]'){
+					return false;
+				}
+
+				proto = v.getProto(obj);//获取prototype
+
+				//通过Object.create(null)形式创建的{}是没有prototype的
+				if( !proto){
+					return true;
+				}
+
+				Ctor = v.hasOwn.call(proto,"constructor") && proto.constructor;
+				return typeof Ctor === "function" && v.fnToString.call(Ctor) === v.ObjectFunctionString;
+
+			},
+			isFunction : function(obj){
+				return JQ.type( obj ) === "function";
+			},
+			type : function(obj){
+				if( obj == null){
+					return obj + ""; //undefined 或 null
+				}
+
+				return typeof obj === "object" || typeof obj === "function" ?
+				v.class2type[ v.toString.call( obj )] || object : typeof object;
+			}
+		});
 			
 	return JQ;
 });
