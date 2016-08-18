@@ -1,25 +1,11 @@
 <head>
-	<script src="require.js" ></script>
-	<script type="text/javascript">
-		require.config({
-		    paths:{
-		        "JQ":"./JQ",
-		        "init":'./init'
-		    }
-		});
-		
-	</script>
+	<script src="bowl.js" ></script>
 </head>
 <body>
 	<div>22222222222222</div>
-	<script type="text/javascript">
-		require(['JQ','init'],function($,init){
-			var $div = $('div');
-    		$div.setBackground().setColor();
-
-    		var arr = [1, 2, 3];
-    		console.log($div.extend({target:123},{num:345}))
-
-		});
+	<div>22222222222222</div>
+	
+	<script>
+	require('./config.js')
 	</script>
 </body>

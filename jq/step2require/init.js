@@ -5,11 +5,10 @@ define(function(require, exports, module) {
 			if(!selector){
 				return this;
 			}else{
-				var ele = document.querySelector(selector);
+				var eleList = JQ.find(selector);
 
-				if(ele){
-					this[0] = ele;
-					this.length = 1;
+				if(eleList){
+					JQ.merge(this, eleList);
 				}
 
 				return this;

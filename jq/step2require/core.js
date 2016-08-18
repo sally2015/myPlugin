@@ -7,6 +7,7 @@ define(function(require, exports, module) {
 
 		}
 		JQ.fn = JQ.prototype={
+			length : 0,
 			constructor : JQ,
 			version : version,
 			setBackground : function(){
@@ -50,7 +51,7 @@ define(function(require, exports, module) {
 				for( ; i<length; i++){
 
 					//只处理对象值不为null/undefined的情况
-					if( ( option = arguments[i] !=null)){
+					if( ( option = arguments[i]) !=null){
 						
 						var name,clone,copy;
 
@@ -59,8 +60,8 @@ define(function(require, exports, module) {
 							src = target[name];
 							copy = option[name];
 
-							//target已有该属性且完全相等，继续循还
-							if( src === copy){
+							//避免自己和自己合并，导致无线循坏
+							if( target === copy){
 								continue;
 							}
 							//深拷贝
@@ -97,38 +98,51 @@ define(function(require, exports, module) {
 			v.class2type["[object "+name+"]"] = name.toLowerCase();
 		});
 
+		
+		JQ.isArray = JQ.fn.isArray = Array.isArray;
+		JQ.isPlainObj = JQ.fn.isPlainObj = function(obj){
+			var proto,Ctor;
+			if( !obj || v.toString.call !== '[object object]'){
+				return false;
+			}
+
+			proto = v.getProto(obj);//获取prototype
+
+			//通过Object.create(null)形式创建的{}是没有prototype的
+			if( !proto){
+				return true;
+			}
+
+			Ctor = v.hasOwn.call(proto,"constructor") && proto.constructor;
+			return typeof Ctor === "function" && v.fnToString.call(Ctor) === v.ObjectFunctionString;
+
+		}
+		JQ.isFunction = JQ.fn.isFunction = function(obj){
+			return JQ.type( obj ) === "function";
+		}
 		JQ.extend({
-			isArray : Array.isArray,
-			isPlainObj : function(obj){
-				var proto,Ctor;
-				console.log(111)
-				if( !obj || v.toString.call !== '[object object]'){
-					return false;
-				}
-
-				proto = v.getProto(obj);//获取prototype
-
-				//通过Object.create(null)形式创建的{}是没有prototype的
-				if( !proto){
-					return true;
-				}
-
-				Ctor = v.hasOwn.call(proto,"constructor") && proto.constructor;
-				return typeof Ctor === "function" && v.fnToString.call(Ctor) === v.ObjectFunctionString;
-
-			},
-			isFunction : function(obj){
-				return JQ.type( obj ) === "function";
-			},
-			type : function(obj){
+			type :function(obj){
 				if( obj == null){
 					return obj + ""; //undefined 或 null
 				}
 
 				return typeof obj === "object" || typeof obj === "function" ?
 				v.class2type[ v.toString.call( obj )] || object : typeof object;
+			},
+			merge : function(first, second){
+				var len = second.length,
+					i = first.length,
+					j = 0;
+
+
+				for(; j<len;j++){
+					first[i++] = second[j];
+				}
+				first.length = i;
+				return first;
 			}
 		});
+		
 			
 	return JQ;
 });
