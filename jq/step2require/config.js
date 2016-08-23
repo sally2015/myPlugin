@@ -9,5 +9,5 @@ define(function(require, exports, module) {'use strict';
 
 	var JQ = require('./jQ');
 	JQ('div').setBackground();
-	console.log(JQ('div'))
+	console.log(JQ('div').find('span').last())
 });

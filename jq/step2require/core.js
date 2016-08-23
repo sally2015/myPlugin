@@ -10,13 +10,23 @@ define(function(require, exports, module) {
 			length : 0,
 			constructor : JQ,
 			version : version,
-			setBackground : function(){
+			setBackground : function(elems){
 				this[0].style.backgroundColor="yellow";
 				return this;
 			},
 			setColor : function(){
 				this[0].style.color="red";
 				return this;
+			},
+			pushStack : function(elems){
+
+				//将获取的元素转为JQ对象
+				var ret = JQ.merge( this.constructor(),elems);//this.contructor返回一个len为0的JQ对象
+			
+				//添加关系链，新JQ对象的prevObject指向旧JQ对象
+				ret.prevObject = this;
+
+				return ret;
 			}
 		};
 
@@ -120,6 +130,42 @@ define(function(require, exports, module) {
 		JQ.isFunction = JQ.fn.isFunction = function(obj){
 			return JQ.type( obj ) === "function";
 		}
+		JQ.fn.extend({
+			find : function(selector){
+				var ret,
+					i,
+					len = this.length,
+					self = this;
+
+					ret = this.pushStack([]);
+
+				for(var i = 0;i < len; i++){
+					JQ.find(selector,self[i],ret);
+				}
+				//转为JQ对象
+				return ret;
+			},
+			end : function(){
+				//直接返回上一次检索到的JQ对象（如果木有，则返回一个空的JQ对象）
+				return this.prevObject || this.constructor();
+			},
+			eq : function(i){
+				var len = this.length,
+					j = +i <0 ? i+len : i;//支持负数搜索
+
+					return this.pushStack( j >=0 && j< len ? [this[j]] :[] );
+			},
+			get : function(num){
+				return num !=null ? (num < 0 ? this[ num +this.length ] : this[ num ]) :
+					[].slice.call(this);
+			},
+			first : function(){
+				return this.eq(0);
+			},
+			last : function(){
+				return this.eq(-1);
+			}
+		});
 		JQ.extend({
 			type :function(obj){
 				if( obj == null){
