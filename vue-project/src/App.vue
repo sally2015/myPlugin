@@ -1,0 +1,83 @@
+<template>
+  <div id="app">
+     <h1 v-text="msg"></h1>
+     <input type="" name="" v-model="newItem" v-on:keyup.enter="addNew()">
+     <ul>
+       <li v-for="item in items" v-on:click="toggleFinished(item)" v-bind:class="{finished:item.isFinished}">
+        {{item.label}}
+        {{item.isFinished}}
+       </li>
+     </ul>
+  </div>
+ 
+</template>
+
+<script>
+import Store from './store.js';
+export default {
+  data () {
+    return { 
+      msg:'this is a todolist',
+      items:Store.fetch(),
+      newItem:''
+
+    }
+  },
+  methods:{
+    toggleFinished:function(item){
+
+        item.isFinished = !item.isFinished;
+    },
+    addNew:function(){
+
+      this.items.push({
+        label:this.newItem,
+        isFinished:false
+      });
+
+      this.newItem='';
+
+    }
+  },
+  watch:{
+    items:{
+        handler:function(val,oldVal){
+            Store.save(val);
+        },
+        deep:true
+    }
+  }
+}
+</script>
+
+<style>
+.finished{ color: red }
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#app {
+  color: #2c3e50;
+  margin-top: -100px;
+  max-width: 600px;
+  font-family: Source Sans Pro, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#app a {
+  color: #42b983;
+  text-decoration: none;
+}
+
+.logo {
+  width: 100px;
+  height: 100px
+}
+</style>
