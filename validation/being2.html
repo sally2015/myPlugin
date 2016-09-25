@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>功能组件</title>
+        <style>
+            .error {
+                color: red;
+            }
+            form {
+                display: inline-block;
+                border: 1px solid #cecece;
+                padding: 40px 30px;
+            }
+            form > label {
+                display: block;
+                margin: 20px 0;
+            }
+            .username input {
+                margin-left: 16px;
+            }
+            .password input {
+                margin-left: 32px;
+            }
+            .submit {
+                float: right;
+                padding: 4px 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="validForm" novalidate="novalidate">
+            <label class="username" for="username"> 用户名:
+                <input type="text" name="username" id="username" />
+            </label>
+            <label class="password" for="password"> 密码:
+                <input type="text" name="password" id="password" />
+            </label>
+            <label class="rePassword" for="password"> 确认密码:
+                <input type="text" name="confirm" id="confirm" />
+            </label>
+            <input class="submit" type="submit" id="submit" />
+        </form>
+
+        <script src="./shawnway-validation-2.0.js"></script>
+        <script>
+            window.onload = function() {
+                //传入参数form表单id,验证规则，提示消息,提示消息共有类名error,id是相对应的inputID+'_error',如username_error
+                var v = new ShawnwayValidation('validForm', {
+                    rules : {
+                        username : {//传入验证的id
+                            require : true,
+                            minLength : 6,
+                            maxLength : 11,
+                            isDigital : true,
+                            isMobile : true
+
+                        },
+                        password : {
+                            require : true,
+                            alphDig : true
+                        },
+                        confirm : {
+                            isEqualTo : 'password',
+                            require : true
+                        }
+                    },
+                    messages : {
+                        username : {
+                            require : '必须填入用户名',
+                            isMobile : '必须是11位的手机号码',
+                            minLength : '至少有六位数',
+                            maxLength : '不能超过11位数'
+                        },
+                        password : {
+                            require : '密码必填',
+                            alphDig : '必须是字母或数字'
+                        }
+
+                    }
+                });
+
+                var oSubmit = document.getElementById('submit');
+
+                oSubmit.onclick = function(ev) {
+                    ev.preventDefault();
+                    v.valid(function(result) {//验证成功后调用的方法
+                        alert(result);
+                    })
+                }
+            };
+
+            //test();
+        </script>
+    </body>
+</html>
