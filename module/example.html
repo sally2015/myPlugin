@@ -1,0 +1,35 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<script src='myModules.js'>
+		</script>
+		<script>
+			myModules.define('bar', [], function(){
+				function hello (msg) {
+					console.log('hello'+msg);
+				}
+
+				return {
+					hello : hello
+				}
+			});
+			myModules.define('foo', ['bar'], function(bar){
+				var foo = 'foo';
+				function awwsome (msg) {
+					bar.hello(msg)
+				}
+
+				return {
+					awwsome : awwsome
+				}
+			});
+
+			var bar = myModules.get('bar');
+			var foo = myModules.get('foo');
+			bar.hello('getbar');
+			foo.awwsome('getfoo');
+		</script>
+	</body>
+</html>
