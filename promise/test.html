@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="promise.js"></script>
+	<script>
+		var promise = new Promise();
+
+		var delay1 = function(){
+			setTimeout(function(){
+				if(( +new Date())%2 ==0 ){
+					promise.resolve('成功1');
+				}else{
+					promise.reject('失败1');
+				}
+				
+				
+			},0);
+			return promise;
+		}
+		var callback1 = function(re){
+			re = re + "数据2";
+			console.log(re)
+		}
+		var callback2 = function(re){
+			re = re + "数据3";
+			console.log(re)
+		}
+		delay1().then(callback1,callback1).then(callback2,callback2);
+	</script>
+</body>
+</html>
