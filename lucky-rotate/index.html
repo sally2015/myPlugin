@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="./css/index.css" type="text/css" />
+</head>
+<body>
+	<div class="niceMenu" id="menuWrap">
+		<ul>
+			<li class="li li1">
+				<a href="" class="a1">
+					<span class="content">111111</span>
+				</a>
+			</li>
+			<li class="li li2">
+				<a href="" class="a1">
+					<span class="content">222222</span>
+				</a>
+			</li>
+		
+			<li class="li li3">
+				<a href="" class="a3">
+					<span class="content">333333</span>
+				</a>
+			</li>
+			<li class="li li4">
+				<a href="" class="a4">
+					<span class="content">444444</span>
+				</a>
+			</li>
+			<!-- <li class="li li5">
+				<a href="" class="a5">
+					<span class="content">555555</span>
+				</a>
+			</li>
+			<li class="li li6">
+				<a href="" class="a6">
+					<span class="content">666666</span>
+				</a>
+			</li> -->
+			<!-- <li class="li li6">
+				<a href="" class="a6">6666666</a>
+			</li>
+			<li class="li li6">
+				<a href="" class="a6">6666666</a>
+			</li>
+			<li class="li li6">
+				<a href="" class="a6">6666666</a>
+			</li>
+			<li class="li li6">
+				<a href="" class="a6">6666666</a>
+			</li> -->
+		</ul>
+	</div>
+	<script src="./js/menu.js"></script>
+	<script>
+		var menu = new Menu('menuWrap');
+		document.onclick = function(){
+
+			var type = Math.floor(Math.random()*6)
+			menu.rotate( type,function(){
+				console.log('end')
+			})
+		}
+
+		
+
+	</script>
+</body>
+</html>

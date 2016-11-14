@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.wrap{
+			margin: 100px auto;
+			width: 400px;
+			height: 400px;
+			background: blue;
+			border-radius: 50%; 
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap" class="wrap">
+		123
+	</div>
+	<script>
+		document.onclick = function(){
+			rotate('#wrap',30, 180, 3, function(){
+				console.log("end")
+			})
+		}
+		
+		
+		function rotate(element, startAngle, endAngle, duration, callback){
+			var ele = document.querySelector(element);
+			var delayTime = duration || 3;
+			ele.style.transitionDuration = '0s';
+			ele.style.transform = "rotate("+ startAngle +"deg)";
+ 			ele.style.transitionTimingFunction = "cubic-bezier(.37,.56,.29,.94)";
+
+ 			setTimeout(function(){
+
+ 				ele.style.transitionDuration = delayTime +'s';
+ 				ele.style.transform = "rotate("+ endAngle +"deg)";
+
+ 			}, 16);
+
+ 			if( ele.transitionEventBtn ){
+ 				return;
+ 			}
+ 			setEvent(ele, callback)
+
+ 			function setEvent(ele, cb){
+ 				var transitions = {
+			         'transition':'transitionend',
+			         'OTransition':'oTransitionEnd',
+			         'WebkitTransition':'webkitTransitionEnd'
+			    }
+
+			    var webkitEvent,
+			    	t;
+
+			    for( t in transitions){
+		           if( ele.style[t] !== undefined ){
+		               webkitEvent = transitions[t];
+		               break;
+		           }
+		       	}
+		       	webkitEvent && ele.addEventListener(webkitEvent,cb);
+		       	ele.transitionEventBtn = true;
+
+ 			}
+ 			
+
+		}
+	</script>
+</body>
+</html>

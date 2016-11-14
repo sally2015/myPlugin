@@ -1,0 +1,75 @@
+html {
+	font-size: 20px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.niceMenu {
+	position: relative;
+	width: 20rem;
+	height: 20rem;
+	margin: 230px auto;
+	border: 1px solid #000;
+}
+
+.li {
+	position: absolute;
+	top: 0;
+	width: 10rem;
+	height: 10rem;
+	transform-origin: 100% 100%;
+	overflow: hidden;
+	border: 1px solid #ddd;
+}
+
+.li a {
+	display: block;
+	position: absolute;
+	width: 20rem;
+	height: 20rem;
+	bottom: -200px;
+	right: -200px;
+	background: blue;
+	border-radius: 50%;
+	transform: skew(-30deg) rotate(0deg) scale(1);
+}
+/*
+ *这里skew30deg是根据个数计算，如果6个则是90-360/6
+ *rotate 是 360除以个数 如360/6 每个li递增
+*/
+
+
+.li1{
+	-webkit-transform: rotate(0deg) skew(30deg) scale(1);
+	transform:rotate(0deg) skew(30deg)  scale(1);
+	 
+
+}
+
+.li2{
+	-webkit-transform: rotate(60deg)  skew(30deg) scale(1);
+	transform:rotate(60deg)  skew(30deg) scale(1);
+	 
+}
+.li3{
+	-webkit-transform: rotate(120deg)  skew(30deg)scale(1);
+	transform:rotate(120deg) skew(30deg)  scale(1);
+	
+}
+.li4{
+	transform: rotate(180deg) skew(30deg)  scale(1);
+}
+
+.li5{
+	transform: rotate(240deg) skew(30deg)  scale(1);
+}
+.li6{
+	transform:  rotate(300deg) skew(30deg) scale(1);
+} 
